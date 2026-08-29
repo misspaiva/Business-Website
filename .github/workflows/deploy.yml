@@ -39,6 +39,13 @@ jobs:
       - name: Build
         run: npm run build
 
+       - name: Inspect build output
+        run: |
+          echo "=== DIST CONTENTS ==="
+          find dist -maxdepth 3 -type f -print
+          echo "=== DIST INDEX ==="
+          cat dist/index.html
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
