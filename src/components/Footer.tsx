@@ -14,7 +14,8 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-[13px] leading-relaxed text-ink-muted">
-              Artificial intelligence · Computational science · Intelligent systems
+              Governança de IA para Times de Engenharia — LGPD · Segredos ·
+              Licenças · Rastreabilidade
             </p>
           </div>
 
@@ -25,22 +26,25 @@ export function Footer() {
                 <span className="absolute h-1.5 w-1.5 rounded-full bg-emerald-400/60 animate-pulse-soft" />
               </span>
               <span className="font-mono text-[11px] uppercase tracking-widest text-ink-muted">
-                System Online
+                Brasília, DF
               </span>
             </div>
-            <span className="text-[12px] text-ink-faint">
-              © 2026 Paiva Intelligence
-            </span>
+            <a
+              href="mailto:hello@paivaintelligence.org"
+              className="text-[12px] text-ink-soft hover:text-ink transition-colors"
+            >
+              hello@paivaintelligence.org
+            </a>
           </div>
         </div>
 
         <div className="mt-10 h-px w-full bg-surface-line" />
         <div className="mt-6 flex flex-col gap-2 text-[11px] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
           <span className="font-mono uppercase tracking-widest">
-            Independent · Research-driven · Location-independent
+            © 2026 Paiva Intelligence · Independent · Brasília, DF
           </span>
           <span className="font-mono uppercase tracking-widest">
-            Built with precision
+            Governança de IA · Educação · Processo · Controle
           </span>
         </div>
       </div>

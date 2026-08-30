@@ -9,27 +9,27 @@ interface Area {
 const AREAS: Area[] = [
   {
     index: '01',
-    title: 'Artificial Intelligence',
+    title: 'Diagnóstico',
     description:
-      'Machine intelligence, reasoning systems, AI-assisted software, and emerging computational methods.',
+      'Mapeamento de uma semana do uso real de IA no seu time — dados em prompts, segredos no repo, código IA sem rastreio, contaminação de licença. Entrego inventário + matriz de riscos + plano de remediação.',
   },
   {
     index: '02',
-    title: 'Computational Science',
+    title: 'Política de Uso de IA',
     description:
-      'Mathematical modeling, simulation, algorithms, and computational approaches to complex problems.',
+      'Política escrita em linguagem de engenharia — não jurídica — que o seu time consegue seguir no dia a dia. Regras claras para prompts, código gerado por IA, ferramentas permitidas e fluxo de revisão.',
   },
   {
     index: '03',
-    title: 'Intelligent Systems',
+    title: 'Ferramenta no CI',
     description:
-      'Systems designed to observe, adapt, organize information, and support complex decision-making.',
+      'Verificação automatizada no pipeline: segredos, dados pessoais e proveniência de código IA em cada PR. Nada que retire o código do ambiente do cliente — roda dentro do repo.',
   },
   {
     index: '04',
-    title: 'Experimental Technology',
+    title: 'Workshop para Devs',
     description:
-      'Prototypes, interfaces, tools, and unconventional applications of emerging technology.',
+      '3 horas que mudam como o time usa IA — e o que nunca vai num prompt. Para times que adotaram as ferramentas e querem fazer isso com segurança, sem depender de política que ninguém lê.',
   },
 ];
 
@@ -61,7 +61,7 @@ export function AreasOfExploration() {
       <div className="container-editorial">
         <div className="flex items-center gap-3">
           <span className="h-px w-6 bg-surface-line" />
-          <span className="eyebrow">Areas of Exploration</span>
+          <span className="eyebrow">Três camadas</span>
         </div>
 
         <ul className="mt-14 grid grid-cols-1 gap-x-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-10">

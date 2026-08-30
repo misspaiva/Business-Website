@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
-  { label: 'Research', href: '#research' },
-  { label: 'Systems', href: '#exploration' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'About', href: '#about' },
+  { label: 'Diagnóstico', href: '#diagnostico' },
+  { label: 'Sobre', href: '#about' },
+  { label: 'Isca', href: '#isca' },
+  { label: 'Contato', href: '#contact' },
 ] as const;
 
 export function Navigation() {
@@ -65,7 +65,7 @@ export function Navigation() {
             href="#contact"
             className="border border-surface-line px-4 py-2 text-[12px] font-medium tracking-wide text-ink-soft transition-all duration-300 ease-precise hover:border-ink-faint hover:text-ink"
           >
-            Contact
+            Fale conosco
           </a>
         </div>
 
@@ -102,7 +102,7 @@ export function Navigation() {
             onClick={() => setMenuOpen(false)}
             className="mt-4 border border-surface-line px-4 py-3 text-center text-[13px] font-medium text-ink-soft transition-colors hover:text-ink"
           >
-            Contact
+            Fale conosco
           </a>
         </div>
       </div>

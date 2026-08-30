@@ -1,5 +1,4 @@
 import { ArrowUpRight, Mail } from 'lucide-react';
-import { ComputationalField } from '@/components/ComputationalField';
 
 export function Hero() {
   return (
@@ -13,7 +12,7 @@ export function Hero() {
           <div className="animate-fade-up" style={{ animationDelay: '0.05s' }}>
             <div className="flex items-center gap-3">
               <span className="h-px w-6 bg-surface-line" />
-              <span className="eyebrow">Paiva Intelligence</span>
+              <span className="eyebrow">Governança de IA para Times de Engenharia</span>
             </div>
           </div>
 
@@ -21,17 +20,23 @@ export function Hero() {
             className="heading-display mt-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-balance animate-fade-up"
             style={{ animationDelay: '0.12s' }}
           >
-            Building intelligence
+            Sua equipe usa IA para{' '}
             <br />
-            for complex systems.
+            programar. Quem{' '}
+            <br />
+            ensinou a usar{' '}
+            <br />
+            com segurança?
           </h1>
 
           <p
             className="mt-7 max-w-prose text-base leading-relaxed text-ink-muted sm:text-lg animate-fade-up text-pretty"
             style={{ animationDelay: '0.2s' }}
           >
-            Research, computation, and intelligent software at the intersection of
-            artificial intelligence and systems thinking.
+            Quase ninguém. Empresas adotaram as ferramentas em 2023 e nunca
+            criaram as regras. Dados de clientes em prompts, segredos colados em
+            chats, código IA entrando em produção sem rastreio — o problema não
+            é jurídico. É de comportamento, processo e controle.
           </p>
 
           <div
@@ -39,10 +44,10 @@ export function Hero() {
             style={{ animationDelay: '0.28s' }}
           >
             <a
-              href="#projects"
+              href="#diagnostico"
               className="group inline-flex items-center justify-center gap-2 border border-surface-line bg-surface-raised px-6 py-3.5 text-[13px] font-medium tracking-wide text-ink transition-all duration-300 ease-precise hover:border-ink-faint"
             >
-              Explore the work
+              Agendar diagnóstico
               <ArrowUpRight
                 size={15}
                 strokeWidth={1.75}
@@ -50,11 +55,11 @@ export function Hero() {
               />
             </a>
             <a
-              href="#contact"
+              href="#isca"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[13px] font-medium tracking-wide text-ink-muted transition-colors duration-300 hover:text-ink"
             >
               <Mail size={15} strokeWidth={1.75} />
-              Contact
+              Baixar os 15 riscos (grátis)
             </a>
           </div>
         </div>
@@ -80,3 +85,6 @@ export function Hero() {
     </section>
   );
 }
+
+// Re-export para manter o import no App.tsx funcionando
+import { ComputationalField } from '@/components/ComputationalField';

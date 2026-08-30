@@ -12,22 +12,24 @@ export function Philosophy() {
         >
           <div className="flex items-center gap-3">
             <span className="h-px w-6 bg-surface-line" />
-            <span className="eyebrow">Philosophy</span>
+            <span className="eyebrow">O problema real</span>
           </div>
 
           <blockquote className="heading-display mt-8 text-2xl font-medium leading-snug tracking-tighter text-ink sm:text-3xl lg:text-[2.75rem] text-balance">
-            Intelligence is not simply computation. It is the ability to understand
-            systems, recognize patterns, and act within complexity.
+            Empresas adotaram IA em 2023. Ninguém ensinou o time a usar com
+            segurança. Política em PDF não muda o comportamento de um dev com
+            pressa na quarta-feira à noite.
           </blockquote>
 
           <div className="mt-10 h-px w-16 bg-surface-line" />
 
           <p className="mt-8 max-w-prose text-base leading-relaxed text-ink-muted text-pretty sm:text-lg">
-            Paiva Intelligence is an independent technology enterprise focused on
-            computational research and intelligent systems. We work at the
-            intersection of artificial intelligence, mathematical modeling, and
-            software — building tools and investigating ideas that expand what
-            intelligent software can become.
+            O gap entre o que o compliance espera e o que acontece no repositório
+            não é problema de jurídico — é problema de educação, processo e
+            controle. Três camadas que se sustentam: regras que devs entendem e
+            conseguem seguir, rastreabilidade de código IA dentro do fluxo real
+            de desenvolvimento, e verificação automatizada no pipeline. Governa
+            quem consegue transformar princípio abstrato em prática diária.
           </p>
         </div>
       </div>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15 Riscos de IA no Desenvolvimento — Paiva Intelligence</title>
+  <style>
+    @page {
+      margin: 2cm;
+      size: A4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #0a0a0b;
+      background: #ffffff;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 12px;
+    }
+    .page {
+      padding: 40px 0 64px;
+    }
+    .header {
+      border-bottom: 2px solid #0a0a0b;
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .logo-dot {
+      width: 10px;
+      height: 10px;
+      background: #e85a8e;
+      border-radius: 50%;
+    }
+    .logo-text {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #e85a8e;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #5a5a62;
+      max-width: 560px;
+      margin-bottom: 16px;
+    }
+    .meta {
+      font-size: 13px;
+      color: #7a7a82;
+    }
+    .intro {
+      font-size: 15px;
+      color: #3a3a40;
+      margin-bottom: 36px;
+      padding: 20px 24px;
+      background: #f7f7f8;
+      border-left: 3px solid #e85a8e;
+      border-radius: 0 6px 6px 0;
+    }
+    .intro strong {
+      color: #0a0a0b;
+    }
+    .risk {
+      display: flex;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid #e5e5e7;
+      page-break-inside: avoid;
+    }
+    .risk:last-child {
+      border-bottom: none;
+    }
+    .num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #0a0a0b;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .content {
+      flex: 1;
+      min-width: 0;
+    }
+    .cat {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e85a8e;
+      margin-bottom: 6px;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .body-text {
+      font-size: 14.5px;
+      color: #3a3a40;
+      margin-bottom: 12px;
+      line-height: 1.55;
+    }
+    .mitigation {
+      padding: 12px 16px;
+      background: #f0f0f2;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #1a1a1e;
+      border-left: 2px solid #0a0a0b;
+    }
+    .mitigation strong {
+      color: #0a0a0b;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .closing {
+      margin-top: 36px;
+      padding: 24px;
+      background: #f7f7f8;
+      border-radius: 8px;
+    }
+    .closing h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #0a0a0b;
+    }
+    .closing p {
+      font-size: 14.5px;
+      color: #3a3a40;
+      margin-bottom: 6px;
+    }
+    .closing a {
+      color: #e85a8e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .closing a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #0a0a0b;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #7a7a82;
+    }
+    .footer a {
+      color: #e85a8e;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    @media print {
+      body { padding: 0; }
+      .page { padding: 0; }
+      .risk { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="logo-row">
+        <span class="logo-dot"></span>
+        <span class="logo-text">PAIVA INTELLIGENCE</span>
+      </div>
+      <h1>Os 15 riscos de IA no<br>desenvolvimento que<br>sua empresa não vê.</h1>
+      <p class="subtitle">
+        Um levantamento prático para CTOs e heads de engenharia: os riscos reais
+        que times brasileiros estão correndo agora com IA no fluxo de
+        desenvolvimento — e como começar a mitigá-los esta semana.
+      </p>
+      <div class="meta">
+        Sauanna Paiva · Paiva Intelligence · Brasília, DF · 2026
+      </div>
+    </div>
+
+    <div class="intro">
+      <strong>Por que esse documento existe.</strong> Empresas adotaram ferramentas de
+      IA em 2023. Quase ninguém criou as regras do uso. O resultado não é um problema
+      jurídico — é um problema de comportamento, processo e controle. Este documento
+      lista os 15 riscos mais comuns que eu identifico no diagnóstico de governança de
+      IA, com mitigação concreta para cada um.
+    </div>
+
+    <div class="risk">
+      <span class="num">01</span>
+      <div class="content">
+        <div class="cat">Dados · LGPD</div>
+        <h3 class="title">Dados pessoais de clientes em prompts</h3>
+        <p class="body-text">Dev com pressa cola query com dados reais (CPF, nome, e-mail, telefone,
+          health data) no ChatGPT ou Copilot para debugar. Ninguém registra. Ninguém sabe.
+          A LGPD não tem "não sabíamos que ia para a IA" como defesa — trata-se de dado
+          pessoal sendo enviado a um sistema de terceiro, e em muitos casos esse sistema
+          retém os dados nos logs.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Crie uma política de prompt explícita: o que nunca vai num prompt (dados de
+          clientes, saúde, financeiros, segredos industriais). Treine o time em como
+          debugar com dados anonimizados ou sintéticos. Registre o que foi promptado —
+          um inventário simples evita o "ninguém sabe" quando a questão aparece.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">02</span>
+      <div class="content">
+        <div class="cat">Segurança · Segredos</div>
+        <h3 class="title">Segredos expostos em chats de IA</h3>
+        <p class="body-text">Chaves de API, tokens, connection strings, senhas de serviço coladas em chats
+          de IA para "ajudar a configurar" — e ficando em logs de terceiros, fora de qualquer
+          inventário de segredos da empresa. O segredo existe em um lugar que sua equipe de
+          segurança não controla e não monitora.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Estenda seu inventário de segredos para incluir "não compartilhar em ferramentas
+          de IA". Use gitleaks ou similar no pre-commit para flags de segredos no código —
+          mas lembre que o risco aqui é prompts, não apenas commits. Treine o time para
+          nunca cola credenciais em qualquer chat.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">03</span>
+      <div class="content">
+        <div class="cat">Código · Rastreabilidade</div>
+        <h3 class="title">Código IA em produção sem rastreio</h3>
+        <p class="body-text">Código gerado por IA entra em produção sem revisão diferenciada e sem registro.
+          Quando o incidente chegar — um bug que só aparece sob condição específica, um
+          comportamento inesperado — ninguém sabe que a lógica foi gerada por IA, e ninguém
+          no time sabe responder pelo quê. Você acumula dívida técnica invisível.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Toda código gerado por IA que vai para produção deve passar por revisão com a mesma
+          rigorosidade de código de um terceiro que você não conhece. Registre a origem
+          (quale ferramenta, qual prompt, quem revisou). Adicione ao checklist de PR: "este
+          código foi gerado por IA?" — e se sim, rastreie.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">04</span>
+      <div class="content">
+        <div class="cat">Licença · Produto</div>
+        <h3 class="title">Contaminação de licença em código gerado por IA</h3>
+        <p class="body-text">Código sugerido por IA pode conter trecho de projetos com licença copyleft
+          (GPL, AGPL) — e entrar no seu produto fechado sem que ninguém perceba. O autor é
+          uma máquina, não um contribuidor que você pode verificar. Se sua empresa vende
+          produto fechado ou SaaS B2B com clientes que exigem descarga de licença, isso é
+          risco real que não tem verificação automática no CI de hoje.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Para times que dependem de licenciamento limpo: estenda a verificação de licença
+          (FOSSA, Sonatype, ou verify manual) para código gerado por IA. Antes de ir para
+          produção, o trecho gerado por IA deve passar pelo mesmo gate de verificação de
+          licença que qualquer outra contribuição externa.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">05</span>
+      <div class="content">
+        <div class="cat">Processo · Qualidade</div>
+        <h3 class="title">Revisão de código que não considera origem IA</h3>
+        <p class="body-text">Reviewers revisam o código como sempre revisaram — sem considerar que o código
+          pode ter sido gerado por IA e, portanto, pode conter padrões que um humano escreveria
+          de forma diferente (e com menos cuidado). O review não captura que o código não foi
+          "pensado" pelo autor que o escreveu.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Treine os reviewers para code generated by AI: verificar não só se o código funciona,
+          mas se ele é o caminho certo — ou se a IA sugeriu algo que parece correto mas não é a
+          melhor decisão de design para o contexto. Isso não é sobre "IA é ruim"; é sobre revisão
+          com consciência de origem.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">06</span>
+      <div class="content">
+        <div class="cat">Conformidade · LGPD</div>
+        <h3 class="title">Uso de IA sem base legal documentada</h3>
+        <p class="body-text">Se o seu time envia dados pessoais para ferramentas de IA (mesmo que seja um
+          caso de debug com dados de teste), você realizou tratamento de dados pessoais com um
+          operador de terceiro — e pode não ter base legal documentada para isso. O DPO ou
+          jurídico pode não saber que isso está acontecendo.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Mapeie quais ferramentas de IA o time usa e com que tipo de dados. Documente — com
+          seu jurídico — se há base legal para cada uso (ex.: dados anonimizados vs. dados
+          pessoais de clientes). Se não há, pare e documente antes de continuar. O diagnóstico
+          inclui esse mapeamento.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">07</span>
+      <div class="content">
+        <div class="cat">Segurança · Configuração</div>
+        <h3 class="title">Configurações de IA que enviam dados para treinar</h3>
+        <p class="body-text">Algumas ferramentas de IA coletam dados de uso para treinar seus modelos — e,
+          dependendo da configuração e do contrato, pode haver ambiguidade sobre se dados da sua
+          empresa estão sendo usados para treinar modelos de terceiros. O time pode estar
+          aceitando os termos sem ler, ou aceitando com uma configuração que não considera esse
+          risco.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Revise os termos de cada ferramenta de IA que o time usa — especialmente a cláusula de
+          uso de dados para treinamento. Configure o máximo possível para "não usar meus dados
+          para treinar" (quando a ferramenta oferece). Documente as configurações escolhidas.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">08</span>
+      <div class="content">
+        <div class="cat">Confiabilidade · Engenharia</div>
+        <h3 class="title">Confiança cega no código gerado por IA</h3>
+        <p class="body-text">Devs que nunca escreveram determinado trecho de código podem confiar no código
+          gerado por IA porque "parece certo" — e só descobrem o problema quando o código entra
+          em produção ou quando um bug puder chegar. Isso é especialmente perigoso para lógica de
+          negócio crítica, cálculos financeiros, ou qualquer código onde o custo do erro é alto.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Defina zonas de confiança: código gerado por IA não entra em áreas críticas de negócio
+          sem revisão especializada e testes adicionais. Isto é parte do processo — não um
+          bloqueio geral, mas uma restrição de risco calibrada.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">09</span>
+      <div class="content">
+        <div class="cat">Proveniência · Responsabilidade</div>
+        <h3 class="title">Responsabilidade indefinida por código IA</h3>
+        <p class="body-text">Quando um bug causado por código gerado por IA chega em produção, quem é
+          responsável? Se ninguém registrou que o código foi gerado por IA e revisado por X, a
+          resposta não é clara. Em um incidente com cliente ou auditoria, essa indefinição de
+          responsabilidade é um problema real.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Para cada código gerado por IA que vai para produção, registre: quem gerou (ferramenta
+          + prompt básico), quem revisou, e quem aprova. Isso cria rastreabilidade e define
+          responsabilidade — e também ajuda no debugging futuro.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">10</span>
+      <div class="content">
+        <div class="cat">Processo · Onboarding</div>
+        <h3 class="title">Novo dev que usa IA sem saber as regras do time</h3>
+        <p class="body-text">Um desenvolvedor novo entra no time e, nos primeiros dias, já está usando IA
+          para acelerar seu trabalho — sem conhecer as regras (ou a falta delas) do time sobre
+          uso de IA. O onboarding não cobre isso, e o dev começa a gerar código e prompts que o
+          time não sabe que estão acontecendo.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Inclua no onboarding do dev: política de uso de IA, ferramentas permitidas, o que nunca
+          vai em prompt, e como registrar uso de IA no fluxo. Isso é educação, não burocracia —
+          e evita que o time acumule riscos sem saber.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">11</span>
+      <div class="content">
+        <div class="cat">Segurança · Prompt Injection</div>
+        <h3 class="title">Prompt injection em ferramentas que usam IA</h3>
+        <p class="body-text">Se sua equipe usa ferramentas que incorporam IA (ex.: um chatbot de suporte que
+          usa LLM, ou uma ferramenta interna que consulta IA), existe o risco de prompt injection
+          — alguém injeta um prompt malicioso que faz a IA expor dados, gerar conteúdo indevido, ou
+          contornar uma regra. Esses riscos existem e são pouco discutidos em times de
+          desenvolvimento.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Identifique onde IA está sendo usada dentro de ferramentas que sua empresa construiu ou
+          usa, e considere os riscos de prompt injection. Para ferramentas de usuário final que
+          incorporam IA, considere tested prompts e controle de saída. Isso sai do escopo do
+          diagnóstico básico, mas é algo que eu identifico quando analiso o ambiente de vocês.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">12</span>
+      <div class="content">
+        <div class="cat">Privacidade · Dados de Terceiros</div>
+        <h3 class="title">Dados de terceiros (parceiros, fornecedores) em prompts</h3>
+        <p class="body-text">Muito além de dados de clientes, seu time pode estar colocando dados de parceiros,
+          fornecedores, ou outros terceiros em prompts de IA — dados que você tem como trattar por
+          contrato ou acordo, e que não deveriam ir para um sistema de terceiro sem consentimento
+          ou cláusula.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Amplie a política de prompt para cobrir não só dados de clientes, mas dados de qualquer
+          terceiro que você tem relação contratual com. Se o contrato com o parceiro tem cláusula de
+          proteção de dados, verifique se o uso de IA para processar esses dados está coberto ou se
+          precisa de ajuste.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">13</span>
+      <div class="content">
+        <div class="cat">Conformidade · Auditoria</div>
+        <h3 class="title">Nada documentado para auditoria futura</h3>
+        <p class="body-text">Se um auditor (de cliente, regulador, ou parceiro) perguntar: "como sua empresa
+          usa IA no desenvolvimento e como garante que os dados pessoais não estão sendo
+          expostos?", e o time não tem nada documentado, a resposta é "não temos documentação disso".
+          Isso não é uma resposta aceitável em auditoria — e pode virar um ponto de atenção ou
+          bloqueio.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Comece pelo inventário: que ferramentas de IA o time usa, com que dados, e com que
+          configuração. Documente isso. Senão, quando a auditoria chegar, você estará reagindo —
+          não rastreando. O diagnóstico entrega esse inventário como parte do relatório de achados.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">14</span>
+      <div class="content">
+        <div class="cat">Controle · CI/CD</div>
+        <h3 class="title">Sem verificação automatizada de IA no pipeline</h3>
+        <p class="body-text">Até hoje, a maioria dos times que adotou IA não tem nada no CI/CD que verifique
+          uso de IA — segredos colados em prompts, código gerado por IA sem rastreio, dados
+          sensíveis em logs de ferramentas de IA. Tudo depende da memória e da intenção do dev —
+          o que não é controle.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          A terceira camada do meu trabalho: ferramenta de verificação automatizada no pipeline —
+          segredos, dados sensíveis e proveniência de código IA em cada PR. Isso é o que transforma
+          política em controle real. Se você quer ver como isso funciona na prática, me chame para
+          conversarmos.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk">
+      <span class="num">15</span>
+      <div class="content">
+        <div class="cat">Estratégia · Decisão</div>
+        <h3 class="title">Ainda não decidiu o que permitir e o que não permitir</h3>
+        <p class="body-text">O risco mais fundamental: o time usa IA e a liderança ainda não decidiu o que é
+          válido e o que não é. Sem essa decisão, o time vai adotando à medida — e acumulando
+          riscos sem consciência de que os está acumulando. Isso não é problema do dev; é problema
+          da liderança não ter definido os limites.</p>
+        <div class="mitigation">
+          <strong>Mitigação</strong>
+          Decida — ou seja claro que está decidindo com o diagnóstico. O que é permitido usar IA?
+          Em quais contextos? Quais ferramentas são permitidas? Qual é o fluxo de revisão para
+          código IA? Com essa decisão documentada, o time tem uma referência clara. Sem ela, o time
+          está adotando à medida.
+        </div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <h2>O próximo passo</h2>
+      <p>Esse documento lista os riscos. O diagnóstico de governança de IA entrega um inventário
+        real do seu time — o que está acontecendo, o que é risco, e o que fazer depois.</p>
+      <p>Se o diagnóstico faz sentido para você, agende uma conversa de 15 minutos. Sem
+        compromisso.</p>
+      <p style="margin-top: 12px;">
+        <a href="https://calendly.com/paivasauanna/conversa-de-15-min-governanca-de-ia">
+          Agendar conversa de 15 min →
+        </a>
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>Paiva Intelligence · Brasília, DF</span>
+      <span>
+        <a href="mailto:hello@paivaintelligence.org">hello@paivaintelligence.org</a>
+        · <a href="https://www.linkedin.com/in/sauannapaiva">LinkedIn</a>
+      </span>
+    </div>
+  </div>
+</body>
+</html>
