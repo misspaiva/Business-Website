@@ -5,6 +5,7 @@ const NAV_LINKS = [
   { label: 'Diagnóstico', href: '#diagnostico' },
   { label: 'Sobre', href: '#about' },
   { label: 'Recurso', href: '#recurso' },
+  { label: 'Projects', href: '#projetos' },
   { label: 'Contato', href: '#contact' },
 ] as const;
 

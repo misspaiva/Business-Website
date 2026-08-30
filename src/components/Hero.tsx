@@ -55,11 +55,11 @@ export function Hero() {
               />
             </a>
             <a
-              href="#isca"
+              href="#recurso"
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[13px] font-medium tracking-wide text-ink-muted transition-colors duration-300 hover:text-ink"
             >
               <Mail size={15} strokeWidth={1.75} />
-              Baixar os 15 riscos (grátis)
+              Receber os 15 riscos (grátis)
             </a>
           </div>
         </div>
