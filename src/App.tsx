@@ -6,6 +6,7 @@ import { Projects } from '@/components/Projects';
 import { Research } from '@/components/Research';
 import { About } from '@/components/About';
 import { Diagnostico } from '@/components/Diagnostico';
+import { RecursoGratuito } from '@/components/RecursoGratuito';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 
@@ -21,6 +22,7 @@ function App() {
         <Research />
         <About />
         <Diagnostico />
+        <RecursoGratuito />
         <Contact />
       </main>
       <Footer />

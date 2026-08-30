@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { CheckCircle, ArrowRight } from 'lucide-react';
-import { Isca } from '@/components/Isca';
+import { RecursoGratuito } from '@/components/RecursoGratuito';
 
 const STEPS = [
   {
@@ -266,9 +266,9 @@ export function Diagnostico() {
             </div>
           </div>
 
-          {/* Isca */}
+          {/* Recurso gratuito */}
           <div className="mt-14 border-t border-surface-line pt-10">
-            <Isca />
+            <RecursoGratuito />
           </div>
         </div>
       </div>

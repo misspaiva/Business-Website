@@ -1,23 +1,9 @@
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Arquivos de ambiente e build
+node_modules/
+dist/
 .env
+.env.local
+
+# Arquivos de recursos que não devem ser servidos publicamente
+# (converta localmente com Ctrl+P → Salvar como PDF e envie manualmente)
+src/assets/15riscos.html

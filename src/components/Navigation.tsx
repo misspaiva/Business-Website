@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 const NAV_LINKS = [
   { label: 'Diagnóstico', href: '#diagnostico' },
   { label: 'Sobre', href: '#about' },
-  { label: 'Isca', href: '#isca' },
+  { label: 'Recurso', href: '#recurso' },
   { label: 'Contato', href: '#contact' },
 ] as const;
 
