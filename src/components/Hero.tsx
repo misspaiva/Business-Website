@@ -1,86 +1,59 @@
-import { ArrowUpRight, Mail } from 'lucide-react';
-
+import { BrasiliaField } from '@/components/BrasiliaField';
+>>>>>>> 8849f31 (Site completo: home, lab, recurso, contato e nav)
 export function Hero() {
   return (
-    <section id="top" className="relative min-h-screen overflow-hidden pt-16 lg:pt-18">
-      {/* faint top hairline */}
-      <div className="pointer-events-none absolute inset-x-0 top-16 h-px bg-surface-line lg:top-18" />
-
-      <div className="container-editorial grid min-h-[calc(100vh-4rem)] grid-cols-1 items-center gap-12 py-20 lg:grid-cols-12 lg:gap-8 lg:py-0">
-        {/* Left — copy */}
-        <div className="lg:col-span-7 lg:pr-8">
-          <div className="animate-fade-up" style={{ animationDelay: '0.05s' }}>
-            <div className="flex items-center gap-3">
-              <span className="h-px w-6 bg-surface-line" />
-              <span className="eyebrow">Governança de IA para Times de Engenharia</span>
-            </div>
-          </div>
+    <section className="relative min-h-screen overflow-hidden bg-surface">
+      {/* Brasília: fundo absoluto, dona do show */}
+      <div className="absolute inset-0">
+        <BrasiliaField />
+      </div>
+      {/* Véu escuro à esquerda para o texto respirar */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#0a0a0b_25%,transparent_60%)]" />
+      {/* Véu nas bordas */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,#0a0a0b_95%)]" />
+<div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-6 pt-24">
+        <div className="mt-auto max-w-2xl pb-32">
+          <p
+            className="font-mono text-xs tracking-[0.3em] text-[#d0bcff] animate-fade-in"
+          >
+            FOUNDER
+          </p>
+>>>>>>> 8849f31 (Site completo: home, lab, recurso, contato e nav)
 
           <h1
-            className="heading-display mt-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-balance animate-fade-up"
+            className="heading-display mt-6 animate-fade-up text-5xl tracking-[0.08em] text-ink sm:text-6xl lg:text-7xl"
             style={{ animationDelay: '0.12s' }}
           >
-            Sua equipe usa IA para{' '}
-            <br />
-            programar. Quem{' '}
-            <br />
-            ensinou a usar{' '}
-            <br />
-            com segurança?
+              SAUANNA PAIVA
           </h1>
 
           <p
-            className="mt-7 max-w-prose text-base leading-relaxed text-ink-muted sm:text-lg animate-fade-up text-pretty"
-            style={{ animationDelay: '0.2s' }}
-          >
-            Quase ninguém. Empresas adotaram as ferramentas em 2023 e nunca
-            criaram as regras. Dados de clientes em prompts, segredos colados em
-            chats, código IA entrando em produção sem rastreio — o problema não
-            é jurídico. É de comportamento, processo e controle.
-          </p>
-
-          <div
-            className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center animate-fade-up"
+            className="mt-6 max-w-md text-lg leading-relaxed text-ink-muted text-pretty animate-fade-up"
             style={{ animationDelay: '0.28s' }}
           >
-            <a
-              href="#diagnostico"
-              className="group inline-flex items-center justify-center gap-2 border border-surface-line bg-surface-raised px-6 py-3.5 text-[13px] font-medium tracking-wide text-ink transition-all duration-300 ease-precise hover:border-ink-faint"
-            >
-              Agendar diagnóstico
-              <ArrowUpRight
-                size={15}
-                strokeWidth={1.75}
-                className="text-ink-muted transition-all duration-300 ease-precise group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink"
-              />
-            </a>
-            <a
-              href="#recurso"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[13px] font-medium tracking-wide text-ink-muted transition-colors duration-300 hover:text-ink"
-            >
-              <Mail size={15} strokeWidth={1.75} />
-              Receber os 15 riscos (grátis)
-            </a>
-          </div>
-        </div>
+           Baseada em Brasília, onde a regulação de IA do Brasil está sendo escrita: ANPD, PL 2338, TCU.
+          </p>
+>>>>>>> 8849f31 (Site completo: home, lab, recurso, contato e nav)
 
-        {/* Right — abstract computational visual */}
-        <div
-          className="relative h-72 sm:h-96 lg:col-span-5 lg:h-[calc(100vh-7rem)] animate-fade-in"
-          style={{ animationDelay: '0.35s' }}
-        >
-          <div className="absolute inset-0 lg:inset-y-0 lg:right-0 lg:left-[-2rem]">
-            <ComputationalField />
-          </div>
-          {/* subtle left fade on large screens to blend into background */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-surface to-transparent lg:block" />
+          <p
+            className="mt-12 font-mono text-xs tracking-widest text-ink-faint animate-fade-in"
+            style={{ animationDelay: '0.45s' }}
+          >
+            LAT -15.79 / LON -47.88 — BRASÍLIA, DF
+          </p>
         </div>
       </div>
 
-      {/* scroll cue */}
-      <div className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex">
-        <span className="eyebrow text-[10px]">Scroll</span>
-        <span className="h-10 w-px bg-gradient-to-b from-surface-line to-transparent" />
+      <div
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-fade-in"
+        style={{ animationDelay: '0.7s' }}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <span className="font-mono text-[10px] tracking-widest text-ink-faint">
+            SCROLL
+          </span>
+          <div className="h-10 w-px bg-gradient-to-b from-[#7c3aed] to-transparent" />
+        </div>
       </div>
     </section>
   );
