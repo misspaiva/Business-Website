@@ -1,9 +1,18 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 /**
- * BrasiliaField v3 — O Plano Piloto como fundo de cena.
- * Sem pulsos, sem halos: só a geometria, o lago e a atmosfera.
+ * BrasiliaField v4 — O Plano Piloto como fundo de cena.
+ * Mesma geometria, mesma paleta, mesma composição do v3.
+ * O que muda é só a "física" do render: bloom sutil nas linhas,
+ * tone mapping cinematográfico, pontos de luz suaves (não quadrados)
+ * e um leve brilho de água no Lago Paranoá.
+ *
+ * NOTA: se o seu three.js for >= r150, talvez seja necessário trocar
+ * os imports de 'three/examples/jsm/...' para 'three/addons/...'.
  */
 export function BrasiliaField() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -34,6 +43,19 @@ export function BrasiliaField() {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(mount.clientWidth, mount.clientHeight);
+
+    // ── Realismo: tone mapping cinematográfico ─────────────
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+    // three r152+: outputColorSpace. Versões antigas: outputEncoding = THREE.sRGBEncoding
+    if ('outputColorSpace' in renderer) {
+      // @ts-ignore - compat entre versões do three
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+    } else {
+      // @ts-ignore - compat entre versões do three
+      renderer.outputEncoding = THREE.sRGBEncoding;
+    }
+
     mount.appendChild(renderer.domElement);
 
     const ACCENT = new THREE.Color('#a78bfa');      // lilás provisório
@@ -226,7 +248,70 @@ export function BrasiliaField() {
     );
     city.add(lineFromPoints(lakePts2, LAKE, 0.3));
 
-    // ── Nós tênues (sem glow) ──────────────────────────────
+    // ── Brilho de água (realismo sutil, mesma cor do lago) ─
+    const waterUniforms = {
+      uTime: { value: 0 },
+      uColor: { value: LAKE },
+    };
+    const waterGeo = new THREE.CircleGeometry(11.8, 64);
+    const waterMat = new THREE.ShaderMaterial({
+      uniforms: waterUniforms,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float uTime;
+        uniform vec3 uColor;
+        varying vec2 vUv;
+        void main() {
+          vec2 c = vUv - 0.5;
+          float d = length(c) * 2.0;
+          float edge = smoothstep(1.0, 0.75, d) * (1.0 - smoothstep(0.0, 0.3, d));
+          float shimmer = sin((c.x * 10.0 + c.y * 6.0) + uTime * 0.4) * 0.5 + 0.5;
+          float glint = smoothstep(0.85, 1.0, shimmer) * edge;
+          float base = edge * 0.04;
+          gl_FragColor = vec4(uColor, base + glint * 0.05);
+        }
+      `,
+    });
+    const water = new THREE.Mesh(waterGeo, waterMat);
+    water.rotation.x = -Math.PI / 2;
+    water.position.set(0, -0.01, 1.5);
+    city.add(water);
+
+    // ── Nós de luz suaves (sprites com glow, não quadrados) ─
+    function makeGlowTexture() {
+      const size = 64;
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d')!;
+      const grad = ctx.createRadialGradient(
+        size / 2,
+        size / 2,
+        0,
+        size / 2,
+        size / 2,
+        size / 2
+      );
+      grad.addColorStop(0, 'rgba(255,255,255,1)');
+      grad.addColorStop(0.4, 'rgba(255,255,255,0.35)');
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, size, size);
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.needsUpdate = true;
+      return tex;
+    }
+    const glowTex = makeGlowTexture();
+
     const nodeGeo = new THREE.BufferGeometry();
     const nodePositions: number[] = [];
     for (let i = 0; i < 18; i++) {
@@ -242,14 +327,39 @@ export function BrasiliaField() {
       'position',
       new THREE.Float32BufferAttribute(nodePositions, 3)
     );
-       const nodeMat = new THREE.PointsMaterial({
+    const nodeMat = new THREE.PointsMaterial({
       color: INK_FAINT,
-      size: 0.035,
+      size: 0.12,
+      map: glowTex,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.55,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      sizeAttenuation: true,
     });
 
     city.add(new THREE.Points(nodeGeo, nodeMat));
+
+    // ── Pós-processamento: bloom sutil + AA multisample ────
+    const width = mount.clientWidth;
+    const height = mount.clientHeight;
+    const pixelRatio = renderer.getPixelRatio();
+
+    const renderTarget = new THREE.WebGLRenderTarget(
+      width * pixelRatio,
+      height * pixelRatio,
+      { samples: 4 }
+    );
+    const composer = new EffectComposer(renderer, renderTarget);
+    composer.addPass(new RenderPass(scene, camera));
+
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(width, height),
+      0.55, // strength — sutil, não estoura os brancos
+      0.45, // radius
+      0.12  // threshold — baixo pq o fundo já é quase preto
+    );
+    composer.addPass(bloomPass);
 
     // ── Interação: drag com inércia ────────────────────────
     let targetRotY = 0;
@@ -301,6 +411,13 @@ export function BrasiliaField() {
       camera.aspect = mount.clientWidth / mount.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(mount.clientWidth, mount.clientHeight);
+      const pr = renderer.getPixelRatio();
+      composer.setSize(mount.clientWidth, mount.clientHeight);
+      renderTarget.setSize(
+        mount.clientWidth * pr,
+        mount.clientHeight * pr
+      );
+      bloomPass.setSize(mount.clientWidth, mount.clientHeight);
     };
     window.addEventListener('resize', onResize);
 
@@ -309,6 +426,7 @@ export function BrasiliaField() {
     function animate() {
       raf = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
+      waterUniforms.uTime.value = elapsed;
 
       if (!reducedMotion) {
         if (!dragging) {
@@ -328,7 +446,7 @@ export function BrasiliaField() {
         camera.position.y += (camY - camera.position.y) * 0.08;
       }
 
-      renderer.render(scene, camera);
+      composer.render();
     }
     animate();
 
@@ -350,6 +468,12 @@ export function BrasiliaField() {
           obj.geometry.dispose();
         }
       });
+      glowTex.dispose();
+      waterMat.dispose();
+      waterGeo.dispose();
+      renderTarget.dispose();
+      // @ts-ignore - disponível no three r150+
+      bloomPass.dispose?.();
       renderer.dispose();
     };
   }, []);
