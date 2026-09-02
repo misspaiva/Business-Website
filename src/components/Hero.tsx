@@ -15,7 +15,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-6 pt-24">
         <div className="mt-auto max-w-2xl pb-32">
           <p className="font-mono text-xs tracking-[0.3em] text-[#d0bcff] animate-fade-in">
-            FOUNDER
+            AI, Digital Sovereignty & Public Sector Technology
           </p>
 
           <h1
