@@ -22,7 +22,7 @@ export function Hero() {
             className="heading-display mt-6 animate-fade-up text-5xl tracking-[0.08em] text-ink sm:text-6xl lg:text-7xl"
             style={{ animationDelay: '0.12s' }}
           >
-            SAUANNA PAIVA
+            AIVA
           </h1>
 
           <p
