@@ -6,6 +6,7 @@ import { ProjectsAndSystems } from '@/components/ProjectsAndSystems';
 import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
+import { BrandFilm } from '@/components/BrandFilm';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main id="top">
         <Hero />
         <Philosophy />
+        <BrandFilm />
         <AreasOfExploration />
         <ProjectsAndSystems />
         <About />
