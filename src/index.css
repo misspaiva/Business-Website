@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Surfaces — near-black graphite */
+  --surface: #0a0a0b;
+  --surface-raised: #101012;
+  --surface-line: #1c1c20;
+  --surface-line-soft: #16161a;
+
+  /* Ink — soft white typography */
+  --ink: #f4f4f5;
+  --ink-soft: #c8c8cc;
+  --ink-muted: #7a7a82;
+  --ink-faint: #4a4a52;
+
+  /* Accent — restrained magenta-pink */
+  --accent: #e85a8e;
+  --accent-soft: #c24a76;
+  --accent-glow: rgba(232, 90, 142, 0.12);
+}
+
+@layer base {
+  * {
+    border-color: var(--surface-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent-glow);
+    color: var(--ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-line);
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-editorial {
+    @apply mx-auto w-full max-w-editorial px-6 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-widest text-ink-muted;
+  }
+
+  .heading-display {
+    @apply font-sans font-medium tracking-tighter text-ink;
+    line-height: 1.05;
+  }
+
+  .text-body {
+    @apply text-ink-soft leading-relaxed;
+  }
+
+  .divider-line {
+    @apply h-px w-full bg-surface-line;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}

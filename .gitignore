@@ -1,0 +1,9 @@
+# Arquivos de ambiente e build
+node_modules/
+dist/
+.env
+.env.local
+
+# Arquivos de recursos que não devem ser servidos publicamente
+# (converta localmente com Ctrl+P → Salvar como PDF e envie manualmente)
+src/assets/15riscos.html
