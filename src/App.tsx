@@ -6,7 +6,7 @@ import { ProjectsAndSystems } from '@/components/ProjectsAndSystems';
 import { About } from '@/components/About';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
-import { BrandFilm } from '@/components/BrandFilm';
+import { SignalField } from '@/components/SignalField';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <main id="top">
         <Hero />
         <Philosophy />
-        <BrandFilm />
+        <SignalField />
         <AreasOfExploration />
         <ProjectsAndSystems />
         <About />
