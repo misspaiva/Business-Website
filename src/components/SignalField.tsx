@@ -287,19 +287,24 @@ export function SignalField() {
     }
 
     function handleResize() {
-      const width = Math.max(mount.clientWidth, 1);
-      const height = Math.max(mount.clientHeight, 1);
+  const currentMount = mountRef.current;
+  if (!currentMount) return;
 
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+  const width = Math.max(currentMount.clientWidth, 1);
+  const height = Math.max(currentMount.clientHeight, 1);
 
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, coarsePointer ? 1.1 : 1.5));
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
 
-      if (reducedMotion) {
-        renderer.render(scene, camera);
-      }
-    }
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, coarsePointer ? 1.1 : 1.5)
+  );
+
+  if (reducedMotion) {
+    renderer.render(scene, camera);
+  }
+}
 
     window.addEventListener('resize', handleResize);
 
