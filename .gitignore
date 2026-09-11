@@ -1,0 +1,17 @@
+# Dependencies and generated output
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Tooling and editor state
+.sites-runtime/
+coverage/
+.DS_Store
+
